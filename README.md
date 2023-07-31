@@ -47,8 +47,6 @@ The project is built using a variety of technologies and frameworks:
 - MongoDB as the database, with Mongoose as the ODM (Object Data Modeling) library
 - Frontend technologies such as HTML, CSS, and JavaScript (React or other frontend frameworks)
 - Additional libraries like bcrypt for password hashing and uuid for generating unique identifiers
-- Node.js
-- Express.js
 - MongoDB
 - Mongoose
 - ...
@@ -71,8 +69,7 @@ Highlight the key features of your project. What does it do? What problems does 
 
 List any software or dependencies that users need to have installed before they can use your project. For example:
 
-- Node.js (Version X.X.X)
-- MongoDB (Version X.X.X)
+- Node.js (Version > 16)
 
 ### Installation
 
@@ -159,7 +156,7 @@ Before contributing, please familiarize yourself with our [Code of Conduct](CODE
    - Clone the repository from your GitHub account to your local development environment using the `git clone` command.
 
    ```
-   git clone https://github.com/your-username/your-project.git
+   git clone https://github.com/Ammen1/EagelBackend.git
    ```
 
 3. **Set Up the Project:**
@@ -211,8 +208,6 @@ To ensure a smooth contribution process, please follow these guidelines:
 - Be responsive to feedback and be willing to make improvements if needed.
 
 ### Important Note
-
-??????
 
 Thank you for considering contributing to our project. Your contributions help make the job search and recruitment platform better for everyone. Happy coding!
 
