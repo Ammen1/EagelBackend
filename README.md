@@ -42,7 +42,7 @@ The main purpose of this application is to bridge the gap between job seekers an
 
 - **Notifications**: Users receive notifications for important events, such as new job postings or application updates.
 
-## Technologies Used
+## Technologies
 
 The project is built using a variety of technologies and frameworks:
 
@@ -53,20 +53,6 @@ The project is built using a variety of technologies and frameworks:
 - MongoDB
 - Mongoose
 - ...
-
-### Getting Started
-
-To set up the project locally, follow the instructions provided in the README file. Make sure to have Node.js and MongoDB installed on your system.
-
-We welcome contributions from the community to enhance the project further. Feel free to submit pull requests, report issues, or suggest new features.
-
-Enjoy using our job search and recruitment platform!
-
-- ...
-
-## Features
-
-Highlight the key features of your project. What does it do? What problems does it solve? List any functionalities that make your project stand out.
 
 ### Prerequisites
 
@@ -102,20 +88,11 @@ Provide step-by-step instructions on how to install and set up the project on a 
 
    ```
 
-### EnvVariables
-
-add the `.env` file to `.env` and add the following
-
-```
-NODE_ENV = development
-PORT = 5000
-MONGO_URI = your mongodb uri
-
-
 ## Usage
 
 - Create a MongoDB database and obtain your `MongoDB URI` - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
-  This section will guide you on how to use the job search and recruitment platform. The project consists of various functionalities for job seekers and employers. Below are instructions on how to use each feature:
+
+This section will guide you on how to use the job search and recruitment platform. The project consists of various functionalities for job seekers and employers. Below are instructions on how to use each feature:
 
 Job Seeker
 Create a Job Seeker Profile:
@@ -165,6 +142,15 @@ We welcome contributions from the community to enhance and improve the job searc
 ### Code of Conduct
 
 Before contributing, please familiarize yourself with our [Code of Conduct](CODE_OF_CONDUCT.md). We expect all contributors to adhere to this code to maintain a respectful and inclusive community.
+
+### EnvVariables
+
+add the `.env` file to `.env` and add the following
+
+```
+NODE_ENV = development
+PORT = 5000
+MONGO_URI = your mongodb uri
 
 ### Getting Started
 
