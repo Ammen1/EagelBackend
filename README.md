@@ -1,6 +1,6 @@
 # EagelBackend
 
-Short description of your project.
+Short description of our project.
 
 ## Table of Contents
 
@@ -11,7 +11,7 @@ Short description of your project.
 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Env Variables](#envvariables)
+  - [EnvVariables](#envvariables)
 
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -102,7 +102,7 @@ Provide step-by-step instructions on how to install and set up the project on a 
 
    ```
 
-### Env Variables
+### EnvVariables
 
 Rename the `.env.example` file to `.env` and add the following
 
