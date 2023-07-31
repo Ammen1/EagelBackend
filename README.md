@@ -151,6 +151,7 @@ add the `.env` file to `.env` and add the following
 NODE_ENV = development
 PORT = 5000
 MONGO_URI = your mongodb uri
+```
 
 ### Getting Started
 
@@ -208,6 +209,7 @@ git push origin my-feature
 ```
 
 8. **Submit a Pull Request (PR):**
+
 - Go to the original repository on GitHub and click on the "Compare & pull request" button.
 - Provide a clear title and description for your pull request, explaining the changes made.
 - Submit the pull request, and our team will review your contributions.
@@ -231,4 +233,7 @@ Thank you for considering contributing to our project. Your contributions help m
 ????
 
 ## Acknowledgments
+
+```
+
 ```
