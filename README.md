@@ -39,7 +39,7 @@ The main purpose of this application is to bridge the gap between job seekers an
 
 - **Notifications**: Users receive notifications for important events, such as new job postings or application updates.
 
-### Technologies Used
+## Technologies Used
 
 The project is built using a variety of technologies and frameworks:
 
@@ -88,8 +88,15 @@ Provide step-by-step instructions on how to install and set up the project on a 
    ```
 
 3. Install the dependencies:
+
    ```
    npm install
+   npm install jsonwebtoken mongoose bcrypt
+   npm install express mongoose bcryptjs
+   npm install express mongoose body-parser
+
+
+
    ```
 
 ## Usage
