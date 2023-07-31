@@ -8,8 +8,11 @@ Short description of your project.
 - [Technologies](#technologies)
 - [Features](#features)
 - [Getting Started](#getting-started)
+
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+  - [Env Variables](#envvariables)
+
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -99,9 +102,20 @@ Provide step-by-step instructions on how to install and set up the project on a 
 
    ```
 
+### Env Variables
+
+Rename the `.env.example` file to `.env` and add the following
+
+```
+NODE_ENV = development
+PORT = 5000
+MONGO_URI = your mongodb uri
+
+
 ## Usage
 
-This section will guide you on how to use the job search and recruitment platform. The project consists of various functionalities for job seekers and employers. Below are instructions on how to use each feature:
+- Create a MongoDB database and obtain your `MongoDB URI` - [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+  This section will guide you on how to use the job search and recruitment platform. The project consists of various functionalities for job seekers and employers. Below are instructions on how to use each feature:
 
 Job Seeker
 Create a Job Seeker Profile:
@@ -162,47 +176,55 @@ Before contributing, please familiarize yourself with our [Code of Conduct](CODE
 
    - Clone the repository from your GitHub account to your local development environment using the `git clone` command.
 
-   ```
-   git clone https://github.com/Ammen1/EagelBackend.git
-   ```
+```
+
+git clone https://github.com/Ammen1/EagelBackend.git
+
+```
 
 3. **Set Up the Project:**
 
-   - Follow the instructions in the README file to set up the project locally.
+- Follow the instructions in the README file to set up the project locally.
 
 4. **Create a Branch:**
 
-   - Before making changes, create a new branch to work on your feature or bug fix.
+- Before making changes, create a new branch to work on your feature or bug fix.
 
-   ```
-   git checkout -b my-feature
-   ```
+```
+
+git checkout -b my-feature
+
+```
 
 5. **Make Changes:**
 
-   - Implement your changes and add new features or fix bugs.
+- Implement your changes and add new features or fix bugs.
 
 6. **Commit Your Changes:**
 
-   - Once your changes are ready, commit them with descriptive commit messages.
+- Once your changes are ready, commit them with descriptive commit messages.
 
-   ```
-   git add .
-   git commit -m "Add new feature: Feature Name"
-   ```
+```
+
+git add .
+git commit -m "Add new feature: Feature Name"
+
+```
 
 7. **Push to Your Fork:**
 
-   - Push your changes to your forked repository.
+- Push your changes to your forked repository.
 
-   ```
-   git push origin my-feature
-   ```
+```
+
+git push origin my-feature
+
+```
 
 8. **Submit a Pull Request (PR):**
-   - Go to the original repository on GitHub and click on the "Compare & pull request" button.
-   - Provide a clear title and description for your pull request, explaining the changes made.
-   - Submit the pull request, and our team will review your contributions.
+- Go to the original repository on GitHub and click on the "Compare & pull request" button.
+- Provide a clear title and description for your pull request, explaining the changes made.
+- Submit the pull request, and our team will review your contributions.
 
 ### Guidelines
 
@@ -223,3 +245,4 @@ Thank you for considering contributing to our project. Your contributions help m
 ????
 
 ## Acknowledgments
+```
