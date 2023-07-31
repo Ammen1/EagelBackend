@@ -104,7 +104,7 @@ Provide step-by-step instructions on how to install and set up the project on a 
 
 ### EnvVariables
 
-Rename the `.env.example` file to `.env` and add the following
+add the `.env` file to `.env` and add the following
 
 ```
 NODE_ENV = development
