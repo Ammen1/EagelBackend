@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/UserModel.js";
 import generateToken from "../utils/generateToken.js";
+import { E11000 } from "mongoose/lib/error/collection";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth
@@ -30,6 +31,21 @@ const authUser = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
+  if (!name || typeof name !== "string") {
+    return res.json({ status: "error", error: "Invalid name" });
+  }
+
+  if (!password || typeof password !== "string") {
+    return res.json({ status: "error", error: "Invalid password" });
+  }
+
+  if (password.length < 5) {
+    return res.json({
+      status: "error",
+      error: "Password too small. Should be atleast 6 characters",
+    });
+  }
+
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -37,11 +53,20 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("User already exists");
   }
 
-  const user = await User.create({
-    name,
-    email,
-    password,
-  });
+  try {
+    const response = await User.create({
+      name,
+      email,
+      password,
+    });
+    console.log("User created successfully: ", response);
+  } catch (error) {
+    if (error.code === E11000) {
+      // duplicate key
+      return res.json({ status: "error", error: "Username already in use" });
+    }
+    throw error;
+  }
 
   if (user) {
     generateToken(res, user._id);
