@@ -151,7 +151,7 @@ Before contributing, please familiarize yourself with our [Code of Conduct](CODE
 
 ### EnvVariables
 
-add the `.env` file to `.env` and add the following
+add the `.env` file to `root` and add the following
 
 ```
 NODE_ENV = development
