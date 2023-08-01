@@ -83,6 +83,12 @@ Provide step-by-step instructions on how to install and set up the project on a 
    npm install jsonwebtoken mongoose bcrypt
    npm install express mongoose bcryptjs
    npm install express mongoose body-parser
+   npm install dotenv
+   npm install cookie-parser
+   npm install express-async-handler
+   npm install mongodb
+
+
 
 
 

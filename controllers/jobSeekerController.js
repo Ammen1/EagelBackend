@@ -1,6 +1,6 @@
 const { JobSeeker } = require("../models");
 import asyncHandler from "express-async-handler";
-import User from "../models/JobSeekerModel.js";
+
 import generateToken from "../utils/generateToken.js";
 
 // Controller to handle creating a new job seeker
