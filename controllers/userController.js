@@ -1,7 +1,6 @@
 import asyncHandler from "express-async-handler";
 import User from "../models/UserModel.js";
 import generateToken from "../utils/generateToken.js";
-import { E11000 } from "mongoose/lib/error/collection";
 
 // @desc    Auth user & get token
 // @route   POST /api/users/auth

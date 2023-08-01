@@ -1,10 +1,9 @@
-const { JobSeeker } = require("../models");
 import asyncHandler from "express-async-handler";
+// import JobSeeker  from "../models/JobSeekerModel.js";
+import { JobSeeker } from "../models/JobSeekerModel.js";
+// Rest of the code for the controller
 
-import generateToken from "../utils/generateToken.js";
-
-// Controller to handle creating a new job seeker
-exports.createJobSeeker = async (req, res) => {
+const createJobSeeker = asyncHandler(async (req, res) => {
   try {
     const {
       user,
@@ -31,20 +30,20 @@ exports.createJobSeeker = async (req, res) => {
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
-};
+});
 
 // Controller to get all job seekers
-exports.getAllJobSeekers = async (req, res) => {
+const getAllJobSeekers = asyncHandler(async (req, res) => {
   try {
     const jobSeekers = await JobSeeker.find();
     res.status(200).json({ success: true, data: jobSeekers });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
-};
+});
 
 // Controller to get a single job seeker by ID
-exports.getJobSeekerById = async (req, res) => {
+const getJobSeekerById = asyncHandler(async (req, res) => {
   try {
     const jobSeeker = await JobSeeker.findById(req.params.id);
     if (!jobSeeker) {
@@ -56,4 +55,6 @@ exports.getJobSeekerById = async (req, res) => {
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
-};
+});
+
+export { createJobSeeker, getAllJobSeekers, getJobSeekerById };
