@@ -18,6 +18,7 @@ import companyUserProfileRouter from "./routes/companyUserProfileRouter.js";
 import jobApplicationRouter from "./routes/jobApplicationRouter.js";
 import feedbackRouter from "./routes/feedbackRouter.js";
 import messageRouter from "./routes/messageRouter.js";
+import notificationRouter from "./routes/notificationRouter.js";
 
 const port = process.env.PORT || 5000;
 
@@ -42,6 +43,7 @@ app.use("/api/companyuserprofile", companyUserProfileRouter);
 app.use("/api/jobapplication", jobApplicationRouter);
 app.use("/api/feedback", feedbackRouter);
 app.use("/api/message", messageRouter);
+app.use("/api/notification", notificationRouter);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
