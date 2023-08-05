@@ -73,12 +73,12 @@ const jobSchema = new Schema({
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
-    required: true,
+    // required: true,
   },
   jobtype: {
     type: Schema.Types.ObjectId,
     ref: "JobType",
-    required: true,
+    // required: true,
   },
   title: {
     type: String,
