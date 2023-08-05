@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import jobSeekerRouters from "./routes/jobSeekerRoutes.js";
+import addressRouters from "./routes/addressRoutes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 app.use("/api/jobseekers", jobSeekerRouters);
+app.use("/api/address", addressRouters);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();

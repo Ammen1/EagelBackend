@@ -36,9 +36,6 @@ router.post("/jobseekers", async (req, res) => {
   }
 });
 
-// Rest of the route handlers for getting all job seekers and getting a single job seeker by ID
-// ...
-
 // // Route to create a new job seeker
 // router.post("/jobseekers", createJobSeeker);
 

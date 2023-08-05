@@ -6,7 +6,6 @@ const jobSeekerSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     ref: "User",
-    required: true,
   },
   full_name: {
     type: String,
@@ -23,7 +22,6 @@ const jobSeekerSchema = new Schema({
   location: {
     type: Schema.Types.ObjectId,
     ref: "Address",
-    required: true,
   },
   avatar: {
     type: String,
@@ -31,7 +29,6 @@ const jobSeekerSchema = new Schema({
   },
   qualifications: {
     type: String,
-    required: true,
   },
   notifications: [
     {
@@ -52,7 +49,7 @@ const JobSeeker = mongoose.model("JobSeeker", jobSeekerSchema);
 
 // Define the Address schema
 const addressSchema = new Schema({
-  customer: {
+  user: {
     type: Schema.Types.ObjectId,
     ref: "User",
   },
