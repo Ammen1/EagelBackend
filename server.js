@@ -15,6 +15,7 @@ import jobRouters from "./routes/jobRouter.js";
 import jobimageRouters from "./routes/jobImageRouter.js";
 import companyRouters from "./routes/companyRouter.js";
 import companyUserProfileRouter from "./routes/companyUserProfileRouter.js";
+import jobApplicationRouter from "./routes/jobApplicationRouter.js";
 
 const port = process.env.PORT || 5000;
 
@@ -36,6 +37,7 @@ app.use("/api/job", jobRouters);
 app.use("/api/jobimage", jobimageRouters);
 app.use("/api/company", companyRouters);
 app.use("/api/companyuserprofile", companyUserProfileRouter);
+app.use("/api/jobapplication", jobApplicationRouter);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
