@@ -178,11 +178,11 @@ const JobImage = mongoose.model("JobImage", jobImageSchema);
 const companySchema = new Schema({
   company_name: {
     type: String,
-    required: true,
+    // required: true,
   },
   location: {
     type: String,
-    required: true,
+    // required: true,
   },
   is_active: {
     type: Boolean,
