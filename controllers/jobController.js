@@ -32,11 +32,6 @@ const createJob = asyncHandler(async (req, res) => {
       });
     }
 
-    console.log("Title:", title);
-    console.log("Description:", description);
-    console.log("Requirements:", requirements);
-    console.log("Location:", location);
-
     const baseSlug = slugify(title);
     console.log("Base Slug:", baseSlug);
 

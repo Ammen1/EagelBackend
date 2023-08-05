@@ -12,6 +12,7 @@ import addressRouters from "./routes/addressRoutes.js";
 import categoryRouters from "./routes/categoryRoutes.js";
 import jobTypeRouters from "./routes/jobTypeRouter.js";
 import jobRouters from "./routes/jobRouter.js";
+import jobimageRouters from "./routes/jobImageRouter.js";
 
 const port = process.env.PORT || 5000;
 
@@ -30,6 +31,7 @@ app.use("/api/address", addressRouters);
 app.use("/api/category", categoryRouters);
 app.use("/api/jobtype", jobTypeRouters);
 app.use("/api/job", jobRouters);
+app.use("/api/jobimage", jobimageRouters);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();
