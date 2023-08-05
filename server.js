@@ -9,6 +9,7 @@ import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import jobSeekerRouters from "./routes/jobSeekerRoutes.js";
 import addressRouters from "./routes/addressRoutes.js";
+import categoryRouters from "./routes/categoryRoutes.js";
 
 const port = process.env.PORT || 5000;
 
@@ -24,6 +25,7 @@ app.use(cookieParser());
 app.use("/api/users", userRoutes);
 app.use("/api/jobseekers", jobSeekerRouters);
 app.use("/api/address", addressRouters);
+app.use("/api/category", categoryRouters);
 
 if (process.env.NODE_ENV === "production") {
   const __dirname = path.resolve();

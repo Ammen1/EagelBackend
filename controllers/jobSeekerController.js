@@ -1,5 +1,4 @@
 import asyncHandler from "express-async-handler";
-// import JobSeeker  from "../models/JobSeekerModel.js";
 import { JobSeeker } from "../models/JobSeekerModel.js";
 // Rest of the code for the controller
 
