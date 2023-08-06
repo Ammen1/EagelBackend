@@ -1,41 +1,26 @@
 import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
 
-const userSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-    },
+export const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, "Please provide unique Username"],
+    unique: [true, "Username Exist"],
   },
-  {
-    timestamps: true,
-  }
-);
-
-// Match user entered password to hashed password in database
-userSchema.methods.matchPassword = async function (enteredPassword) {
-  return await bcrypt.compare(enteredPassword, this.password);
-};
-
-// Encrypt password using bcrypt
-userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  password: {
+    type: String,
+    required: [true, "Please provide a password"],
+    unique: false,
+  },
+  email: {
+    type: String,
+    required: [true, "Please provide a unique email"],
+    unique: true,
+  },
+  firstName: { type: String },
+  lastName: { type: String },
+  mobile: { type: Number },
+  address: { type: String },
+  profile: { type: String },
 });
 
-const User = mongoose.model("User", userSchema);
-
-export default User;
+export default mongoose.model.Users || mongoose.model("User", UserSchema);
