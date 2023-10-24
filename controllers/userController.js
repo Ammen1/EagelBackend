@@ -153,8 +153,7 @@ export async function updateUser(req, res) {
 
       // Update the data using UserModel.findByIdAndUpdate()
       await UserModel.findByIdAndUpdate(userId, body);
-
-      return res.status(201).send({ msg: "Record Updated...!" });
+      return res.status(201).send({ mgs: "Record Updated...!" });
     } else {
       return res.status(401).send({ error: "User Not Found...!" });
     }
@@ -202,6 +201,14 @@ export async function createResetSession(req, res) {
   }
   return res.status(440).send({ error: "Session expired!" });
 }
+
+// export async function createResetSession(req, res) {
+//   if (req.app.locals.resetSession) {
+//     return res.status(201).send({ flag: req.app.locals.resetSession });
+//   }
+//   return res.status(201).send({ error: "Session expired!" });
+
+// }
 
 // update the password when we have valid session
 /** PUT: http://localhost:5000/api/users/resetPassword */
