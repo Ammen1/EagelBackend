@@ -7,7 +7,7 @@ import cors from "cors";
 import morgan from "morgan";
 
 import connectDB from "./config/db.js";
-import cookieParser from "cookie-parser";
+import cookieParser, { signedCookie } from "cookie-parser";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import userRoutes from "./routes/userRoutes.js";
 import jobSeekerRouters from "./routes/jobSeekerRoutes.js";
@@ -32,13 +32,14 @@ const app = express();
 /** middlewares */
 app.use(cors());
 app.use(express.json());
-app.use(cors());
 app.use(morgan("tiny"));
 app.disable("x-powered-by");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+
+
 
 app.use("/api/users", userRoutes);
 app.use("/api/jobseekers", jobSeekerRouters);
