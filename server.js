@@ -6,6 +6,8 @@ dotenv.config();
 import cors from "cors";
 import morgan from "morgan";
 
+import bodyParser from "body-parser";
+
 import connectDB from "./config/db.js";
 import cookieParser, { signedCookie } from "cookie-parser";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
@@ -34,12 +36,10 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("tiny"));
 app.disable("x-powered-by");
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: "100mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
 
 app.use(cookieParser());
-
-
 
 app.use("/api/users", userRoutes);
 app.use("/api/jobseekers", jobSeekerRouters);
