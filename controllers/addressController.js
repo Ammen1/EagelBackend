@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 import { Address } from "../models/JobSeekerModel.js"; // Assuming the Address model is exported correctly in "../models"
 
 // Controller to create a new address
+
 const createAddress = asyncHandler(async (req, res) => {
   try {
     const { customer, phone, town_city } = req.body;
@@ -17,7 +18,7 @@ const createAddress = asyncHandler(async (req, res) => {
   }
 });
 
-// Controller to get all addresses for a specific customer
+//Controller to get al addresses for a specific customer
 const getAddressesByCustomer = asyncHandler(async (req, res) => {
   try {
     const customerId = req.params.customerId;
