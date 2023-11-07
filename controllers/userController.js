@@ -33,6 +33,13 @@ export async function verifyUser(req, res, next) {
 export async function register(req, res) {
   try {
     const { username, password, profile, email } = req.body;
+    if (!username || !password || !email) {
+      return res.status(400).send({
+        success: false,
+        error: "Please provide username, password, and email",
+      });
+    }
+
     // Check if the username already exists
     const existingUsername = await User.findOne({ username });
     if (existingUsername) {
@@ -51,19 +58,20 @@ export async function register(req, res) {
 
     //Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
+
     //Create new user and save it to database
     const newUser = new User({
       username,
       password: hashedPassword,
-      profile: profile || "",
       email,
+      profile: profile || "",
     });
     // save the user to data base
-    await newUser.save();
+    const user = await newUser.save();
     // Return the succes respone
-    res.status(201).send({ mgs: "User Register SuccesFully" });
+    res.status(201).json({ succes: true, data: user });
   } catch (error) {
-    res.status(500).send({ error: "Not Register try again " });
+    res.status(500).send({ succes: false, error: error.message });
   }
 }
 

@@ -19,7 +19,7 @@ export const UserSchema = new mongoose.Schema({
   address: { type: String },
   profile: { type: String },
 });
-// const User = mongoose.model("User", UserSchema);
-export default mongoose.model.User || mongoose.model("User", UserSchema);
 
-// export default User;
+const User = mongoose.model("User", UserSchema);
+
+export default User;

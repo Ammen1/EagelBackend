@@ -1,5 +1,6 @@
 import asyncHandler from "express-async-handler";
 import { CompanyUserProfile } from "../models/CompanyModel.js"; // Adjust the import path based on your project structure
+import { compareSync } from "bcrypt";
 
 // Controller function to create a new company user profile
 const createCompanyUserProfile = asyncHandler(async (req, res) => {
@@ -14,6 +15,7 @@ const createCompanyUserProfile = asyncHandler(async (req, res) => {
       avatar,
       location,
     });
+
     const savedCompanyUserProfile = await companyUserProfile.save();
     res.status(201).json({ success: true, data: savedCompanyUserProfile });
   } catch (error) {
@@ -24,7 +26,9 @@ const createCompanyUserProfile = asyncHandler(async (req, res) => {
 // Controller function to get all company user profiles
 const getAllCompanyUserProfiles = asyncHandler(async (req, res) => {
   try {
-    const companyUserProfiles = await CompanyUserProfile.find();
+    const companyUserProfiles = await CompanyUserProfile.find().sort(
+      "createdAt"
+    );
     res.status(200).json({ success: true, data: companyUserProfiles });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
@@ -32,7 +36,7 @@ const getAllCompanyUserProfiles = asyncHandler(async (req, res) => {
 });
 
 // Controller function to get a specific company user profile by ID
-const getCompanyUserProfileById = asyncHandler(async (req, res) => {
+const getCompanyUserProfileById = asyncHandler(async (req, rea) => {
   try {
     const companyUserProfileId = req.params.id;
     const companyUserProfile = await CompanyUserProfile.findById(
@@ -41,9 +45,9 @@ const getCompanyUserProfileById = asyncHandler(async (req, res) => {
     if (!companyUserProfile) {
       return res
         .status(404)
-        .json({ success: false, error: "Company user profile not found" });
+        .json({ success: false, error: "Company User Profile not found" });
     }
-    res.status(200).json({ success: true, data: companyUserProfile });
+    res.status(200).json({ success: false, data: companyUserProfile });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -55,18 +59,17 @@ const updateCompanyUserProfile = asyncHandler(async (req, res) => {
     const companyUserProfileId = req.params.id;
     const { company_name, full_name, email, phone_number, avatar, location } =
       req.body;
-    const updatedCompanyUserProfile =
-      await CompanyUserProfile.findByIdAndUpdate(
-        companyUserProfileId,
-        { company_name, full_name, email, phone_number, avatar, location },
-        { new: true }
-      );
-    if (!updatedCompanyUserProfile) {
+    const updateCompanyUserProfile = await CompanyUserProfile.findByIdAndUpdate(
+      companyUserProfileId,
+      { company_name, full_name, email, phone_number, avatar, location },
+      { new: true }
+    );
+    if (!updateCompanyUserProfile) {
       return res
         .status(404)
-        .json({ success: false, error: "Company user profile not found" });
+        .json({ success: false, error: "Company user Profile Not Found" });
     }
-    res.status(200).json({ success: true, data: updatedCompanyUserProfile });
+    res.status(200).json({ success: true, data: updateCompanyUserProfile });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -81,9 +84,9 @@ const deleteCompanyUserProfile = asyncHandler(async (req, res) => {
     if (!deletedCompanyUserProfile) {
       return res
         .status(404)
-        .json({ success: false, error: "Company user profile not found" });
+        .json({ success: false, error: "Company user Profile Not Found" });
     }
-    res.status(200).json({ success: true, data: deletedCompanyUserProfile });
+    res.status(200).json({ success: true, data: deleteCompanyUserProfile });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }

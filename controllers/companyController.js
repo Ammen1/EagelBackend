@@ -23,7 +23,7 @@ const getAllCompanies = asyncHandler(async (req, res) => {
     const companies = await Company.find();
     res.status(200).json({ success: true, data: companies });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
@@ -38,8 +38,8 @@ const getCompanyById = asyncHandler(async (req, res) => {
         .json({ success: false, error: "Company not found" });
     }
     res.status(200).json({ success: true, data: company });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
@@ -53,10 +53,11 @@ const updateCompany = asyncHandler(async (req, res) => {
       { company_name, location, is_active },
       { new: true }
     );
+
     if (!updatedCompany) {
       return res
         .status(404)
-        .json({ success: false, error: "Company not found" });
+        .json({ success: false, error: "Company Not Found" });
     }
     res.status(200).json({ success: true, data: updatedCompany });
   } catch (error) {
@@ -68,13 +69,13 @@ const updateCompany = asyncHandler(async (req, res) => {
 const deleteCompany = asyncHandler(async (req, res) => {
   try {
     const companyId = req.params.id;
-    const deletedCompany = await Company.findByIdAndDelete(companyId);
-    if (!deletedCompany) {
+    const deleteCompany = await Company.findByIdAndDelete(companyId);
+    if (!deleteCompany) {
       return res
         .status(404)
-        .json({ success: false, error: "Company not found" });
+        .json({ success: false, error: "Company not found " });
     }
-    res.status(200).json({ success: true, data: deletedCompany });
+    res.status(200).json({ success: true, data: deleteCompany });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
