@@ -5,11 +5,10 @@ import { Category } from "../models/CompanyModel.js";
 // Controller to create a new category
 const createCategory = asyncHandler(async (req, res) => {
   try {
-    const { name, parent, is_active } = req.body;
+    const { name, is_active } = req.body;
     const baseSlug = slugify(name);
     const category = new Category({
       name,
-      parent,
       is_active,
       slug: baseSlug, // Set the initial slug to the baseSlug before generating a unique one
     });
@@ -21,7 +20,7 @@ const createCategory = asyncHandler(async (req, res) => {
         await category.save();
         res.status(201).json({ success: true, data: category });
       } else {
-        category.slug = `${baseSlug}-${Date.now()}`; // Add a timestamp to make the slug unique
+        category.slug = `${baseSlug}-${Date.now()}`;
         generateUniqueSlug();
       }
     };

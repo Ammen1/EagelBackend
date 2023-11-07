@@ -5,9 +5,8 @@ import { Address } from "../models/JobSeekerModel.js"; // Assuming the Address m
 
 const createAddress = asyncHandler(async (req, res) => {
   try {
-    const { customer, phone, town_city } = req.body;
+    const { phone, town_city } = req.body;
     const address = new Address({
-      customer,
       phone,
       town_city,
     });

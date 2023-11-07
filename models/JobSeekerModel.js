@@ -49,29 +49,11 @@ const JobSeeker = mongoose.model("JobSeeker", jobSeekerSchema);
 
 // Define the Address schema
 const addressSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-  },
   phone: {
     type: String,
-    required: true,
   },
   town_city: {
     type: String,
-    required: true,
-  },
-  created_at: {
-    type: Date,
-    default: Date.now,
-  },
-  updated_at: {
-    type: Date,
-    default: Date.now,
-  },
-  default: {
-    type: Boolean,
-    default: false,
   },
 });
 

@@ -1,4 +1,4 @@
-import UserModel from "../models/UserModel.js";
+import User from "../models/UserModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import ENV from "../config.js";
@@ -10,7 +10,7 @@ export async function verifyUser(req, res, next) {
     const { username } = req.method == "GET" ? req.query : req.body;
 
     // check the user existance
-    let exist = await UserModel.findOne({ username });
+    let exist = await User.findOne({ username });
     if (!exist) return res.status(404).send({ error: "Can't find User!" });
     next();
   } catch (error) {
@@ -34,7 +34,7 @@ export async function register(req, res) {
   try {
     const { username, password, profile, email } = req.body;
     // Check if the username already exists
-    const existingUsername = await UserModel.findOne({ username });
+    const existingUsername = await User.findOne({ username });
     if (existingUsername) {
       return res
         .status(400)
@@ -42,7 +42,7 @@ export async function register(req, res) {
     }
 
     //Chck if the email already exists
-    const existingEmail = await UserModel.findOne({ email });
+    const existingEmail = await User.findOne({ email });
     if (existingEmail) {
       return res
         .status(400)
@@ -52,7 +52,7 @@ export async function register(req, res) {
     //Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
     //Create new user and save it to database
-    const newUser = new UserModel({
+    const newUser = new User({
       username,
       password: hashedPassword,
       profile: profile || "",
@@ -77,7 +77,7 @@ export async function login(req, res) {
   const { username, password } = req.body;
 
   try {
-    UserModel.findOne({ username }).then((user) => {
+    User.findOne({ username }).then((user) => {
       bcrypt
         .compare(password, user.password)
         .then((passwordCheck) => {
@@ -114,7 +114,7 @@ export async function getUser(req, res) {
   const { username } = req.params;
   try {
     if (!username) return res.status(501).send({ error: "Invslid Username" });
-    const user = await UserModel.findOne({ username });
+    const user = await User.findOne({ username });
     if (!user) return res.status(501).send({ error: "Couldn't find the User" });
     // remove password from the user object
     const { password, ...userData } = user.toJSON();
@@ -139,7 +139,7 @@ export async function updateUser(req, res) {
     const { userId } = req.user;
     if (userId) {
       const body = req.user;
-      await UserModel.findByIdAndUpdate(userId, body);
+      await User.findByIdAndUpdate(userId, body);
       return res.status(201).send({ mgs: "Record Updated...!" });
     } else {
       return res.status(401).send({ error: "User Not Found...!" });
@@ -195,12 +195,12 @@ export async function resetPassword(req, res) {
       return res.status(404).send({ error: "Session expired!" });
     const { username, password } = req.body;
     try {
-      UserModel.findOne({ username })
+      User.findOne({ username })
         .then((user) => {
           bcrypt
             .hash(password, 10)
             .then((hashedPassword) => {
-              UserModel.updateOne(
+              User.updateOne(
                 { username: user.username },
                 { password: hashedPassword },
                 function (err, data) {

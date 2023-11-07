@@ -12,8 +12,8 @@ const createCompany = asyncHandler(async (req, res) => {
     });
     const savedCompany = await company.save();
     res.status(201).json({ success: true, data: savedCompany });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
 
