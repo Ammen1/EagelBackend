@@ -2,6 +2,14 @@ import asyncHandler from "express-async-handler";
 import { JobApplication } from "../models/CompanyModel.js"; // Adjust the import path based on your project structure
 
 // Controller function to create a new job application
+/*
+{
+"jobSeeker": "amen",
+"jobListing": "all",
+"resume": "resume",
+"coverLetter": "coverLetter"
+} 
+*/
 export const createJobApplication = asyncHandler(async (req, res) => {
   try {
     const { jobSeeker, jobListing, resume, coverLetter } = req.body;
@@ -58,6 +66,7 @@ export const updateJobApplication = asyncHandler(async (req, res) => {
       isAccepted,
       isInterviewInvited,
     } = req.body;
+
     const updatedJobApplication = await JobApplication.findByIdAndUpdate(
       jobApplicationId,
       {
@@ -68,12 +77,14 @@ export const updateJobApplication = asyncHandler(async (req, res) => {
         isAccepted,
         isInterviewInvited,
       },
-      { new: true }
+      {
+        new: true,
+      }
     );
     if (!updatedJobApplication) {
       return res
         .status(404)
-        .json({ success: false, error: "Job application not found" });
+        .json({ success: false, error: "Job Application Is Not Found...!" });
     }
     res.status(200).json({ success: true, data: updatedJobApplication });
   } catch (error) {
@@ -91,9 +102,9 @@ export const deleteJobApplication = asyncHandler(async (req, res) => {
     if (!deletedJobApplication) {
       return res
         .status(404)
-        .json({ success: false, error: "Job application not found" });
+        .json({ success: false, error: "Job Application Not Found" });
     }
-    res.status(200).json({ success: true, data: deletedJobApplication });
+    res.status(200).json({ success: true, data: deleteJobApplication });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
