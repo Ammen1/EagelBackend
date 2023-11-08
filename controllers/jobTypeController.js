@@ -25,8 +25,7 @@ const getAllJobTypes = async (req, res) => {
 // Controller function to get a specific job type by ID
 const getJobTypeById = async (req, res) => {
   try {
-    const jobTypeId = req.params.id;
-    const jobType = await JobType.findById(jobTypeId);
+    const jobType = await JobType.findById(req.params.id);
     if (!jobType) {
       return res
         .status(404)

@@ -31,7 +31,7 @@ const getMessageById = asyncHandler(async (req, res) => {
     if (!message) {
       return res
         .status(404)
-        .json({ success: false, error: "Message not found" });
+        .json({ success: false, error: "Message Not Found" });
     }
     res.status(200).json({ success: true, data: message });
   } catch (error) {

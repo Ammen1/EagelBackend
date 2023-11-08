@@ -6,10 +6,10 @@ import ENV from "../config.js";
 let nodeConfig = {
   host: "smtp.ethereal.email",
   port: 587,
-  secure: false, // true for 465, false for other ports
+  secure: false, //true for 465, false for other port
   auth: {
     user: ENV.EMAIL, // generated ethereal user
-    pass: ENV.PASSWORD, // generated ethereal password
+    pass: ENV.PASSWORD, //generated ethereal password
   },
 };
 
@@ -19,48 +19,46 @@ let MailGenerator = new Mailgen({
   theme: "default",
   product: {
     name: "Mailgen",
-    link: "https://mailgen.js/",
+    link: "http://mailgen.js",
   },
 });
 
 /** POST: http://localhost:5000/api/users/registerMail 
  * @param: {
-  "username" : "amen",
-  "userEmail" : "amen123@gmail.com",
-  "text" : "",
-  "subject" : "",
-}
+ "username": "amen",
+ "userEmail": "amen123@gmail.com",
+ "text": "",
+ "subject":"",
+ }
 */
-export const registerMail = async (req, res) => {
-  const { username, userEmail, text, subject } = req.body;
 
-  // body of the email
+export const registerByMail = async (req, res) => {
+  const { username, userEmail, text, subject } = req.body;
   var email = {
     body: {
       name: username,
       intro:
-        text || "Welcome to Eagle! We're very excited to have you on board.",
+        text || "Welcome to Sra... ! We are Very Excited To Have You On Site",
       outro:
-        "Need help, or have questions? Just reply to this email, we'd love to help.",
+        "Need Help, or Have Questions? Just Repl to This Email We Heppy To Help",
     },
   };
-
   var emailBody = MailGenerator.generate(email);
 
-  let message = {
+  var message = {
     from: ENV.EMAIL,
     to: userEmail,
-    subject: subject || "Signup Successful",
+    subject: subject || "Signup SuccessFull",
     html: emailBody,
   };
 
-  // send mail
+  //send mail
   transporter
     .sendMail(message)
     .then(() => {
       return res
         .status(200)
-        .send({ msg: "You should receive an email from us." });
+        .send({ msg: "You Should Receive An Email From Us...!" });
     })
     .catch((error) => res.status(500).send({ error }));
 };

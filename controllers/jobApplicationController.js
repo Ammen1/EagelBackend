@@ -41,7 +41,7 @@ export const getJobApplicationById = asyncHandler(async (req, res) => {
   try {
     const jobApplicationId = req.params.id;
     const jobApplication = await JobApplicationobApplication.findById(
-      jobApplicationId
+      req.params.id
     );
     if (!jobApplication) {
       return res

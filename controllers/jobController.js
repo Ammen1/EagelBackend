@@ -61,8 +61,7 @@ const getAllJobs = asyncHandler(async (req, res) => {
 // Controller function to get a specific job by ID
 const getJobById = asyncHandler(async (req, res) => {
   try {
-    const jobId = req.params.id;
-    const job = await Job.findById(jobId);
+    const job = await Job.findById(req.params.id);
     if (!job) {
       return res
         .status(404)
