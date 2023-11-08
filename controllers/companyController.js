@@ -2,6 +2,12 @@ import asyncHandler from "express-async-handler";
 import { Company } from "../models/CompanyModel.js"; // Adjust the import path based on your project structure
 
 // Controller function to create a new company
+/*
+{"company_name":"09876523",
+"location": "Addis Ababa",
+"is_active":true
+}
+**/
 const createCompany = asyncHandler(async (req, res) => {
   try {
     const { company_name, location, is_active } = req.body;

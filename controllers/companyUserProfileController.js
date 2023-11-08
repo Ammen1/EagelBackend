@@ -3,6 +3,17 @@ import { CompanyUserProfile } from "../models/CompanyModel.js"; // Adjust the im
 import { compareSync } from "bcrypt";
 
 // Controller function to create a new company user profile
+/*
+http://localhost:5000/api/companyuserprofile/companyuserprofile
+{
+  "company_name": "AI center",
+  "full_name": "Amen",
+  "email": "a@a.com",
+  "phone_name": "098765432",
+  "avatar": "",
+  "location": "Addis Ababa"
+}
+**/
 const createCompanyUserProfile = asyncHandler(async (req, res) => {
   try {
     const { company_name, full_name, email, phone_number, avatar, location } =
