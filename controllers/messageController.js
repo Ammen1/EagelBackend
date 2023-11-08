@@ -19,26 +19,24 @@ const getAllMessages = asyncHandler(async (req, res) => {
     const messages = await Message.find();
     res.status(200).json({ success: true, data: messages });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: false, error: error.messages });
   }
 });
 
 // Controller function to get a specific message by ID
 const getMessageById = asyncHandler(async (req, res) => {
   try {
-    const messageId = req.params.id;
-    const message = await Message.findById(messageId);
-    if (!message) {
+    const message = await Message.findById(req.params.id);
+    if (message) {
       return res
         .status(404)
-        .json({ success: false, error: "Message Not Found" });
+        .json({ success: false, error: "Message Not Found...!" });
     }
     res.status(200).json({ success: true, data: message });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
-
 // Controller function to update a message by ID
 const updateMessage = asyncHandler(async (req, res) => {
   try {
