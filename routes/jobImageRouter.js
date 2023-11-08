@@ -8,6 +8,6 @@ const router = express.Router();
 
 // Define the routes for job images
 router.post("/image", createJobImage);
-router.get("/image:jobId", getAllJobImagesForJob);
+router.get("/image", getAllJobImagesForJob);
 
 export default router;
