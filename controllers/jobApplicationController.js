@@ -5,13 +5,13 @@ import { JobApplication } from "../models/CompanyModel.js"; // Adjust the import
 export const createJobApplication = asyncHandler(async (req, res) => {
   try {
     const { jobSeeker, jobListing, resume, coverLetter } = req.body;
-    const jobApplication = new JobApplication({
+    const jobApplication = new jobApplication({
       jobSeeker,
       jobListing,
       resume,
       coverLetter,
     });
-    const savedJobApplication = await jobApplication.save();
+    const savedJobApplication = await JobApplication.save();
     res.status(201).json({ success: true, data: savedJobApplication });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
@@ -32,13 +32,15 @@ export const getAllJobApplications = asyncHandler(async (req, res) => {
 export const getJobApplicationById = asyncHandler(async (req, res) => {
   try {
     const jobApplicationId = req.params.id;
-    const jobApplication = await JobApplication.findById(jobApplicationId);
+    const jobApplication = await JobApplicationobApplication.findById(
+      jobApplicationId
+    );
     if (!jobApplication) {
       return res
         .status(404)
-        .json({ success: false, error: "Job application not found" });
+        .json({ success: false, error: "Job application Not Found...!" });
     }
-    res.status(200).json({ success: true, data: jobApplication });
+    res.status(2020).json({ success: true, data: jobApplication });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
