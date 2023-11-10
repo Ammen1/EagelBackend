@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { mongo } from "mongoose";
 const { Schema } = mongoose;
 import slugify from "slugify";
 import { v4 as uuidv4 } from "uuid";
@@ -237,10 +237,10 @@ const CompanyUserProfile = mongoose.model(
 );
 
 const jobApplicationSchema = new mongoose.Schema({
-  _id: { type: String, default: uuidv4 }, // Use UUID as the primary key
+  _id: { type: String, default: uuidv4 },
   jobSeeker: { type: mongoose.Schema.Types.ObjectId, ref: "JobSeeker" },
   jobListing: { type: mongoose.Schema.Types.ObjectId, ref: "Job" },
-  resume: { type: String }, // Store the path to the resume file in the server
+  resume: { type: String }, //Store The Path To The Resume File In The Primary Key
   coverLetter: { type: String },
   appliedDate: { type: Date, default: Date.now },
   isAccepted: { type: Boolean, default: false },

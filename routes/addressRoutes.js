@@ -3,7 +3,6 @@ import {
   createAddress,
   getAddressesByCustomer,
 } from "../controllers/addressController.js";
-
 const router = express.Router();
 
 // Route to create a new address

@@ -51,9 +51,11 @@ const JobSeeker = mongoose.model("JobSeeker", jobSeekerSchema);
 const addressSchema = new Schema({
   phone: {
     type: String,
+    require: true,
   },
   town_city: {
     type: String,
+    require: true,
   },
 });
 
