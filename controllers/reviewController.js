@@ -26,12 +26,11 @@ const getAllReviews = asyncHandler(async (req, res) => {
 // Controller function to get a specific review by ID
 const getReviewById = asyncHandler(async (req, res) => {
   try {
-    const reviewId = req.params.id;
-    const review = await Review.findById(reviewId);
+    const review = await Review.findById(req.params.id);
     if (!review) {
       return res
         .status(404)
-        .json({ success: false, error: "Review not found" });
+        .json({ success: false, error: "Review Not Found...!" });
     }
     res.status(200).json({ success: true, data: review });
   } catch (error) {
@@ -52,19 +51,18 @@ const updateReview = asyncHandler(async (req, res) => {
     if (!updatedReview) {
       return res
         .status(404)
-        .json({ success: false, error: "Review not found" });
+        .json({ success: false, error: "Review Npt Found...!" });
     }
     res.status(200).json({ success: true, data: updatedReview });
   } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+    res.status(500).json({ success: true, error: error.message });
   }
 });
 
 // Controller function to delete a review by ID
 const deleteReview = asyncHandler(async (req, res) => {
   try {
-    const reviewId = req.params.id;
-    const deletedReview = await Review.findByIdAndDelete(reviewId);
+    const deletedReview = await Review.findByIdAndDelete(req.params.id);
     if (!deletedReview) {
       return res
         .status(404)

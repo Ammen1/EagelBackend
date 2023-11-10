@@ -6,13 +6,12 @@ export const createNotification = asyncHandler(async (req, res) => {
   try {
     const { user_id, message } = req.body;
     const newNotification = new Notification({ user_id, message });
-    const savedNotification = await newNotification.save();
-    res.status(201).json({ success: true, data: savedNotification });
+    const savedNotification = newNotification.save();
+    res.status(201).json({ success: false, data: savedNotification });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
-
 // Controller function to get all notifications
 export const getAllNotifications = asyncHandler(async (req, res) => {
   try {
@@ -22,16 +21,14 @@ export const getAllNotifications = asyncHandler(async (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   }
 });
-
 // Controller function to get a specific notification by ID
 export const getNotificationById = asyncHandler(async (req, res) => {
   try {
-    const notificationId = req.params.id;
-    const notification = await Notification.findById(notificationId);
+    const notification = await Notification.findById(req.params.id);
     if (!notification) {
       return res
         .status(404)
-        .json({ success: false, error: "Notification not found" });
+        .json({ success: false, error: "Notification Not Foud...!" });
     }
     res.status(200).json({ success: true, data: notification });
   } catch (error) {
@@ -42,17 +39,21 @@ export const getNotificationById = asyncHandler(async (req, res) => {
 // Controller function to update a notification by ID
 export const updateNotification = asyncHandler(async (req, res) => {
   try {
-    const notificationId = req.params.id;
+    const notificationId = req.params.is;
     const { user_id, message } = req.body;
     const updatedNotification = await Notification.findByIdAndUpdate(
       notificationId,
-      { user_id, message, updated_at: Date.now() },
+      {
+        user_id,
+        message,
+        updated_at: Date.now(),
+      },
       { new: true }
     );
     if (!updatedNotification) {
       return res
         .status(404)
-        .json({ success: false, error: "Notification not found" });
+        .json({ success: true, error: "Notification Not Found...!" });
     }
     res.status(200).json({ success: true, data: updatedNotification });
   } catch (error) {
@@ -70,7 +71,7 @@ export const deleteNotification = asyncHandler(async (req, res) => {
     if (!deletedNotification) {
       return res
         .status(404)
-        .json({ success: false, error: "Notification not found" });
+        .json({ success: false, error: "Notification Not Found...!" });
     }
     res.status(200).json({ success: true, data: deletedNotification });
   } catch (error) {

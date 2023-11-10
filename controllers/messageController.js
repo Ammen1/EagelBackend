@@ -50,7 +50,7 @@ const updateMessage = asyncHandler(async (req, res) => {
     if (!updatedMessage) {
       return res
         .status(404)
-        .json({ success: false, error: "Message not found" });
+        .json({ success: false, error: "Message Not Found...!" });
     }
     res.status(200).json({ success: true, data: updatedMessage });
   } catch (error) {
@@ -61,12 +61,11 @@ const updateMessage = asyncHandler(async (req, res) => {
 // Controller function to delete a message by ID
 const deleteMessage = asyncHandler(async (req, res) => {
   try {
-    const messageId = req.params.id;
-    const deletedMessage = await Message.findByIdAndDelete(messageId);
+    const deletedMessage = await Message.findByIdAndDelete(req.params.id);
     if (!deletedMessage) {
       return res
         .status(404)
-        .json({ success: false, error: "Message not found" });
+        .json({ success: false, error: "Message Not Found" });
     }
     res.status(200).json({ success: true, data: deletedMessage });
   } catch (error) {
