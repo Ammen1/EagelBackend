@@ -3,6 +3,7 @@ import {
   createJobType,
   getAllJobTypes,
   getJobTypeById,
+  updateJobType,
 } from "../controllers/jobTypeController.js";
 
 const router = express.Router();
@@ -15,5 +16,8 @@ router.get("/jobtypes", getAllJobTypes);
 
 // Route to get a specific job type by ID
 router.get("/jobtypes/:id", getJobTypeById);
+
+// Router to update jobtype
+router.put("/updatejobtype/:id", updateJobType);
 
 export default router;

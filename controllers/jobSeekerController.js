@@ -2,6 +2,16 @@ import asyncHandler from "express-async-handler";
 import { JobSeeker } from "../models/JobSeekerModel.js";
 // Rest of the code for the controller
 
+/**
+ *  {
+"full_name":"b@b.com",
+"email":"update", 
+"bio":"Amen#197",
+"skills": "skills",
+"qualifications": "qualifications" 
+}
+ */
+
 const createJobSeeker = asyncHandler(async (req, res) => {
   try {
     const {
@@ -73,4 +83,42 @@ const deleteJobSeeker = asyncHandler(async (req, res) => {
   }
 });
 
-export { createJobSeeker, getAllJobSeekers, getJobSeekerById, deleteJobSeeker };
+//controller to update the jobseeker
+const updateJobSeeker = asyncHandler(async (req, res) => {
+  try {
+    const {
+      user,
+      full_name,
+      email,
+      bio,
+      skills,
+      location,
+      avatar,
+      qualifications,
+    } = req.body;
+    const jobseekerid = req.params.id;
+    const jobseekerupdate = await JobSeeker.findByIdAndUpdate(
+      jobseekerid,
+      { user, full_name, email, bio, skills, location, avatar, qualifications },
+      {
+        new: true,
+      }
+    );
+    if (!jobseekerupdate) {
+      return res
+        .status(404)
+        .json({ error: "there no jobseeker currently...! sorry for this" });
+    }
+    res.status(200).json({ success: true, data: jobseekerupdate });
+  } catch (err) {
+    res.status(500).json({ success: true, error: err.message });
+  }
+});
+
+export {
+  createJobSeeker,
+  getAllJobSeekers,
+  getJobSeekerById,
+  deleteJobSeeker,
+  updateJobSeeker,
+};

@@ -37,4 +37,26 @@ const getJobTypeById = async (req, res) => {
   }
 };
 
-export { createJobType, getAllJobTypes, getJobTypeById };
+// Contriller function to update
+const updateJobType = async (req, res) => {
+  try {
+    const { name, is_active } = req.body;
+    const jobId = req.params.id;
+    const jobtype = await JobType.findByIdAndUpdate(
+      jobId,
+      { name, is_active },
+      { new: true }
+    );
+
+    if (!jobtype) {
+      return res.status(404).json({
+        error: "there no jobtype to update sorry for this my boy...!",
+      });
+    }
+    res.status(200).json({ success: true, data: jobtype });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export { createJobType, getAllJobTypes, getJobTypeById, updateJobType };

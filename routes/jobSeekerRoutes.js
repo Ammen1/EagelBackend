@@ -5,6 +5,7 @@ import {
   getAllJobSeekers,
   getJobSeekerById,
   deleteJobSeeker,
+  updateJobSeeker,
 } from "../controllers/jobSeekerController.js";
 
 // Route to create a new job seeker
@@ -21,5 +22,8 @@ router.get("/jobseekers/:id", getJobSeekerById);
 
 // Router to delete the jobseeker
 router.delete("/deletejobseeker/:id", deleteJobSeeker);
+
+// Route to update jobseeker
+router.put("/updatejobseeker/:id", updateJobSeeker);
 
 export default router;
