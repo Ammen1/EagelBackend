@@ -59,4 +59,25 @@ const updateJobType = async (req, res) => {
   }
 };
 
-export { createJobType, getAllJobTypes, getJobTypeById, updateJobType };
+// to delete jobtype
+const deleteJobType = async (req, res) => {
+  try {
+    const delelejobtype = await JobType.findByIdAndDelete(req.params.id);
+    if (!delelejobtype) {
+      return res
+        .status(404)
+        .json({ error: "there no jobtype to delete from database...!" });
+    }
+    res.status(200).json({ success: true, data: delelejobtype });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+};
+
+export {
+  createJobType,
+  getAllJobTypes,
+  getJobTypeById,
+  updateJobType,
+  deleteJobType,
+};

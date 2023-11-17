@@ -4,6 +4,7 @@ import {
   getAllJobTypes,
   getJobTypeById,
   updateJobType,
+  deleteJobType,
 } from "../controllers/jobTypeController.js";
 
 const router = express.Router();
@@ -19,5 +20,8 @@ router.get("/jobtypes/:id", getJobTypeById);
 
 // Router to update jobtype
 router.put("/updatejobtype/:id", updateJobType);
+
+//Router to delete jobtype
+router.delete("/deletejobtype/:id", deleteJobType);
 
 export default router;
