@@ -1,7 +1,7 @@
 {
   "name": "eagelbackend",
   "version": "1.0.0",
-  "description": "Short description of our project.",
+  "description": "This is connect jobSeeker with Employes.",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -9,7 +9,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tamirat",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
