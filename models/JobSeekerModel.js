@@ -30,18 +30,18 @@ const jobSeekerSchema = new Schema({
   qualifications: {
     type: String,
   },
-  notifications: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Notification",
-    },
-  ],
-  reviews: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Review",
-    },
-  ],
+  // notifications: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Notification",
+  //   },
+  // ],
+  // reviews: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Review",
+  //   },
+  // ],
 });
 
 // Create the JobSeeker model
