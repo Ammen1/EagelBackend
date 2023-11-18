@@ -16,6 +16,9 @@ const createJobType = async (req, res) => {
 const getAllJobTypes = async (req, res) => {
   try {
     const jobTypes = await JobType.find();
+    if (!jobTypes) {
+      return res.status(404).json({ error: "There is no jobtypes...!" });
+    }
     res.status(200).json({ success: true, data: jobTypes });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

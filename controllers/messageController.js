@@ -4,8 +4,8 @@ import { Message } from "../models/PlatformModel.js"; // Adjust the import path 
 // Controller function to create a new message
 const createMessage = asyncHandler(async (req, res) => {
   try {
-    const { user_id, message } = req.body;
-    const newMessage = new Message({ user_id, message });
+    const { message } = req.body;
+    const newMessage = new Message({ message });
     const savedMessage = await newMessage.save();
     res.status(201).json({ success: true, data: savedMessage });
   } catch (error) {
