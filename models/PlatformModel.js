@@ -3,10 +3,6 @@ const { Schema } = mongoose;
 import { v4 as uuidv4 } from "uuid";
 
 const feedbackSchema = new Schema({
-  _id: {
-    type: String,
-    default: uuidv4,
-  },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "Customer",
@@ -34,10 +30,10 @@ const FeedBack = mongoose.model("FeedBack", feedbackSchema);
 
 // Define the Message schema
 const messageSchema = new Schema({
-  _id: {
-    type: String,
-    default: uuidv4,
-  },
+  // _id: {
+  //   type: String,
+  //   default: uuidv4,
+  // },
   user_id: {
     type: Schema.Types.ObjectId,
     ref: "Customer",
@@ -65,15 +61,11 @@ const Message = mongoose.model("Message", messageSchema);
 
 // Define the Notification schema
 const notificationSchema = new Schema({
-  _id: {
-    type: String,
-    default: uuidv4,
-  },
-  user_id: {
-    type: Schema.Types.ObjectId,
-    ref: "Customer",
-    required: true,
-  },
+  // user_id: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Customer",
+  //   required: true,
+  // },
   message: {
     type: String,
     required: true,

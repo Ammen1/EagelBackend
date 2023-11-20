@@ -2,12 +2,23 @@ import asyncHandler from "express-async-handler";
 import { Notification } from "../models/PlatformModel.js"; // Adjust the import path based on your project structure
 
 // Controller function to create a new notification
+// export const createNotification = asyncHandler(async (req, res) => {
+//   try {
+//     const { user_id, message } = req.body
+//     const newNotification = new Notification({ user_id, message });
+//     const savedMessage = new newNotification.save();
+//     res.status(201).json({ success: true, data: savedMessage });
+//   } catch(error) {
+//     res.status(500).json({ success: false, error: error.message });
+//   }
+// });
+
 export const createNotification = asyncHandler(async (req, res) => {
   try {
-    const { user_id, message } = req.body;
-    const newNotification = new Notification({ user_id, message });
-    const savedNotification = newNotification.save();
-    res.status(201).json({ success: false, data: savedNotification });
+    const { message } = req.body;
+    const newNotification = new Notification({ message });
+    const savedNotification = await newNotification.save();
+    res.status(201).json({ success: true, data: savedNotification });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -39,12 +50,11 @@ export const getNotificationById = asyncHandler(async (req, res) => {
 // Controller function to update a notification by ID
 export const updateNotification = asyncHandler(async (req, res) => {
   try {
-    const notificationId = req.params.is;
-    const { user_id, message } = req.body;
+    const notificationId = req.params.id;
+    const { message } = req.body;
     const updatedNotification = await Notification.findByIdAndUpdate(
       notificationId,
       {
-        user_id,
         message,
         updated_at: Date.now(),
       },

@@ -4,14 +4,25 @@ import { Message } from "../models/PlatformModel.js"; // Adjust the import path 
 // Controller function to create a new message
 const createMessage = asyncHandler(async (req, res) => {
   try {
-    const { message } = req.body;
-    const newMessage = new Message({ message });
+    const { message, message_reply } = req.body;
+    const newMessage = new Message({ message, message_reply });
     const savedMessage = await newMessage.save();
     res.status(201).json({ success: true, data: savedMessage });
-  } catch (error) {
-    res.status(500).json({ success: false, error: error.message });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
   }
 });
+
+// const createMessage = async (req, res) => {
+//   try {
+//     const { message, message_reply } = req.body;
+//     const newMessage = new Message({ message, message_reply });
+//     const savedMessage = await newMessage.save();
+//     res.status(201).json({ success: true, data: savedMessage });
+//   } catch (err) {
+//     res.status(500).json({ success: false, error: err.message });
+//   }
+// };
 
 // Controller function to get all messages
 const getAllMessages = asyncHandler(async (req, res) => {
@@ -26,13 +37,14 @@ const getAllMessages = asyncHandler(async (req, res) => {
 // Controller function to get a specific message by ID
 const getMessageById = asyncHandler(async (req, res) => {
   try {
-    const message = await Message.findById(req.params.id);
-    if (message) {
+    const messageId = req.params.id;
+    const getmessageById = await Message.findById(messageId);
+    if (getmessageById) {
       return res
         .status(404)
         .json({ success: false, error: "Message Not Found...!" });
     }
-    res.status(200).json({ success: true, data: message });
+    res.status(200).json({ success: true, data: getmessageById });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
